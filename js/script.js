@@ -15,7 +15,7 @@
   var pieces = [].slice.call(document.querySelectorAll('.piece'));
   var pieceContainers = document.querySelectorAll('.piece-container');
   var buttonsToHide = [easyButton, mediumButton, hardButton];
-  var difficultyButtons = document.querySelectorAll('.difficulty_button');
+  var difficultyButtons = document.querySelectorAll('.difficulty-button');
   var animations = ["animate", "animate_rotate", "animate_horizontal", "animate_vertical", "animate_crazy"];
   var puzzle = document.getElementById('solved-hint');
   var timer = null;
@@ -99,11 +99,12 @@
     //document.body.appendChild(clone);
     //event.dataTransfer.setDragImage(clone, 0, 0);
     //event.dataTransfer.setData("text", event.target.id);
-    event.target.style.opacity = 0.5;
+    event.target.style.opacity = 0.7;
   }
 
   function dragEnd(event) {
     event.target.style.position = 'static';
+    event.target.style.opacity = '';
   }
   
   function dragEnter(event) {}
@@ -245,10 +246,10 @@
       elements[i].setAttribute('class', 'hide-element');
     }
     for (var i=0; i<pieces.length; i++) {
-      pieces[i].style.display = 'none';
+      pieces[i].parentElement.removeChild(pieces[i]);
     }
 
-      difficultyButtons.forEach(function(element, index) {
+    difficultyButtons.forEach(function(element, index) {
       return element.classList.remove('hide-element');
     });
 
